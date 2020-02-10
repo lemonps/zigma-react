@@ -1,6 +1,7 @@
 # Dependency directories
 node_modules/
 jspm_packages/
+package.json
 
 # Logs
 logs
@@ -13,3 +14,4 @@ yarn.lock
 .npm
 .yarn
 .env
+

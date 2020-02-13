@@ -1,4 +1,5 @@
-export const address = "0x13d2740CB75133E71FFf54d23dBd1cF1c2fCaFAF"
+//abi and address after smart contract migrate to blockchain (copy from UserInfoList.json)
+export const address = "0xd38553B0cf69a14C2DBF2368A4A1C26c020e78a8"
 export const abi = [
   {
     "inputs": [],
@@ -19,6 +20,12 @@ export const abi = [
         "indexed": false,
         "internalType": "string",
         "name": "firstName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "lastName",
         "type": "string"
       }
     ],
@@ -60,6 +67,11 @@ export const abi = [
         "internalType": "string",
         "name": "firstName",
         "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "lastName",
+        "type": "string"
       }
     ],
     "payable": false,
@@ -72,6 +84,11 @@ export const abi = [
       {
         "internalType": "string",
         "name": "_firstName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_lastName",
         "type": "string"
       }
     ],

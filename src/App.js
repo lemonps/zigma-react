@@ -19,14 +19,17 @@ class App extends Component{
     this.setState({ account: account[0] })
     console.log("account", account[0])
 
+    //web3 link to smart contract
     const userList = new web3.eth.Contract(abi, address)
     this.setState({ userList })
     console.log("userList", userList)
 
+    //get nummber of user inside blockchain
     const userCount = await userList.methods.userCount().call()
     this.setState({ userCount })
     console.log(userCount)
 
+    //get all users from blockchain
     for (var i = 1; i <= userCount; i++) {
       const user = await userList.methods.users(i).call()
       this.setState({
@@ -41,6 +44,7 @@ class App extends Component{
     this.setState({ loading: false})
   }
 
+  //initialize variable
   constructor(props){
     super(props)
     this.state = {
@@ -53,28 +57,18 @@ class App extends Component{
     // this.toggleCompleted = this.toggleCompleted.bind(this)
   }
   
-  createUser(content) {
+  //create user and push information to blockchain
+  createUser(firstName, lastName) {
     // const x = 0
     this.setState({ loading: true})
-    console.log("name:", content)
-    this.state.userList.methods.createUser(content).send({ from: this.state.account })
+    console.log("name:", firstName)
+    console.log("lastName:", lastName)
+    this.state.userList.methods.createUser(firstName, lastName).send({ from: this.state.account })
     .once('receipt', (receipt) => {
         this.setState({ loading: false})
       }
     )
-    // if (this.state.loading = false) {
-      
-    // }
   }
-
-  // toggleCompleted(userID) {
-  //   this.setState({ loading: true})
-  //   this.state.todoList.methods.toggleCompleted(userID).send({ from: this.state.account })
-  //   .once('receipt', (receipt) => {
-  //       this.setState({ loading: false})
-  //     }
-  //   )
-  // }
 
   render() {
     return (
@@ -83,12 +77,8 @@ class App extends Component{
         <p>Your account: {this.state.account}</p>
         <p>user Count: {this.state.userCount}</p> */}
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-          <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="http://www.dappuniversity.com/free-download" target="_blank">Dapp University | Todo List</a>
-          <ul className="navbar-nav px-3">
-            <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-              <small><a className="nav-link" href="#"><span id="account"></span></a></small>
-            </li>
-          </ul>
+          <a className="navbar-brand col-sm-10" >Zigma</a>
+
         </nav>
         <div className="container-fluid">
           <div className="row">

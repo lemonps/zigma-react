@@ -28,15 +28,15 @@ class UserList extends Component{
                 return(
               <div className="userTemplate" className="checkbox" key = {key}>
                 <label>
-                  <input type="checkbox"
-                    // name = {user.id}
+                  {/* <input type="checkbox" */}
+                    {/* // name = {user.id}
                     defaultChecked = {user.completed}
-                    // ref = {(input) => {
-                    //     this.checkbox = input
+                    // ref = {(input) => { */}
+                    {/* //     this.checkbox = input
                     // }}
-                    onClick = {(event) => {
-                        this.props.toggleCompleted(user.id)
-                        console.log("userID", user.id)}}/>
+                    // onClick = {(event) => { */}
+                    {/* //     this.props.toggleCompleted(user.id)
+                    //     console.log("userID", user.id)}}/> */}
                   <span className="content">{user.firstName}</span>
                 </label>
               </div>

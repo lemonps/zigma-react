@@ -1,34 +1,39 @@
-import React, {Component} from 'react';
-import './App.css'; 
+import React, { Component } from 'react';
+import './App.css';
 
-class UserList extends Component{
+class UserList extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
-        <div id="content">
-            <form id = "form">
-              <div className="form-row">
-                <div className = "col">
-                  <input 
-                    id="firstName" 
-                    ref = {(input) => {this.firstName = input}} 
-                    type="text" className="form-control" 
-                    placeholder="Enter First Name" 
-                    required/>
-                  <input type="submit" hidden= {true}/> 
-                </div>
+      <div id="content">
+        <form id="form">
+          <div className="form-row">
+            <div>
+              <input
+                id="firstName"
+                ref={(input) => { this.firstName = input }}
+                type="text" className="form-control"
+                placeholder="Enter First Name"
+                required />
+              <input type="submit" hidden={true} />
+            </div>
 
-                <div className = "col">
-                  <input 
-                    id="lastName" 
-                    ref = {(input) => {this.lastName = input}} 
-                    type="text" className="form-control" 
-                    placeholder="Enter Last Name" 
-                    required/>
-                  <input type="submit" hidden= {true}/>
-                </div>
-              </div>
+            <div>
+              <input
+                id="lastName"
+                ref={(input) => { this.lastName = input }}
+                type="text" className="form-control"
+                placeholder="Enter Last Name"
+                required />
+              <input type="submit" hidden={true} />
+            </div>
+          </div>
 
-              {/* <input 
+          {/* <input 
                 id="firstName" 
                 ref = {(input) => {this.firstName = input}} 
                 type="text" className="form-control" 
@@ -36,7 +41,7 @@ class UserList extends Component{
                 required/>
               <input type="submit" hidden= {true}/>  */}
 
-              {/* <input 
+          {/* <input 
                 id="lastName" 
                 ref = {(input) => {this.lastName = input}} 
                 type="text" className="form-control" 
@@ -44,64 +49,64 @@ class UserList extends Component{
                 required/>
               <input type="submit" hidden= {true}/> */}
 
-              <input 
-                id="address" 
-                ref = {(input) => {this.address = input}} 
-                type="text" className="form-control" 
-                placeholder="Enter Address" 
-                required/>
-              <input type="submit" hidden= {true}/>
+          <input
+            id="address"
+            ref={(input) => { this.address = input }}
+            type="text" className="form-control"
+            placeholder="Enter Address"
+            required />
+          <input type="submit" hidden={true} />
 
-              <input 
-                id="mobileNo" 
-                ref = {(input) => {this.mobileNo = input}} 
-                type="text" className="form-control" 
-                placeholder="Enter Mobile Number" 
-                required/>
-              <input type="submit" hidden= {true}/>
+          <input
+            id="mobileNo"
+            ref={(input) => { this.mobileNo = input }}
+            type="text" className="form-control"
+            placeholder="Enter Mobile Number"
+            required />
+          <input type="submit" hidden={true} />
 
-              <input 
-                id="email" 
-                ref = {(input) => {this.email = input}} 
-                type="text" className="form-control" 
-                placeholder="Enter Email" 
-                required/>
-              <input type="submit" hidden= {true}/>
+          <input
+            id="email"
+            ref={(input) => { this.email = input }}
+            type="text" className="form-control"
+            placeholder="Enter Email"
+            required />
+          <input type="submit" hidden={true} />
 
-              <input 
-                id="job" 
-                ref = {(input) => {this.job = input}} 
-                type="text" className="form-control" 
-                placeholder="Enter Job" 
-                required/>
-              <input type="submit" hidden= {true}/>
+          <input
+            id="job"
+            ref={(input) => { this.job = input }}
+            type="text" className="form-control"
+            placeholder="Enter Job"
+            required />
+          <input type="submit" hidden={true} />
 
-              <input 
-                id="age" 
-                ref = {(input) => {this.age = input}} 
-                type="text" className="form-control" 
-                placeholder="Enter Age" 
-                required/>
-              <input type="submit" hidden= {true}/>
+          <input
+            id="age"
+            ref={(input) => { this.age = input }}
+            type="text" className="form-control"
+            placeholder="Enter Age"
+            required />
+          <input type="submit" hidden={true} />
 
-              <input 
-                id="salary" 
-                ref = {(input) => {this.salary = input}} 
-                type="text" className="form-control" 
-                placeholder="Enter Salary" 
-                required/>
-              <input type="submit" hidden= {true}/>
+          <input
+            id="salary"
+            ref={(input) => { this.salary = input }}
+            type="text" className="form-control"
+            placeholder="Enter Salary"
+            required />
+          <input type="submit" hidden={true} />
 
-              <input 
-                id="nationalID" 
-                ref = {(input) => {this.nationalID = input}} 
-                type="text" className="form-control" 
-                placeholder="Enter National ID" 
-                required/>
-              <input type="submit" hidden= {true}/>
-            </form>
+          <input
+            id="nationalID"
+            ref={(input) => { this.nationalID = input }}
+            type="text" className="form-control"
+            placeholder="Enter National ID"
+            required />
+          <input type="submit" hidden={true} />
+        </form>
 
-            {/* <ul id="userList" className="list-unstyled">
+        {/* <ul id="userList" className="list-unstyled">
               { this.props.users.map((user, key) => {
                 return(
               <div className="userTemplate" className="checkbox" key = {key}>
@@ -125,18 +130,34 @@ class UserList extends Component{
               })}
             </ul> */}
 
-            <button type="button" className = "btn btn-primary"
-              onClick = {(event) => {
-                event.preventDefault()
-                //create user after click submit
-                this.props.createUser(this.firstName.value, this.lastName.value)
-                console.log(this.firstName.value)
-              }}
-              >Submit</button>
+        <button type="button" className="btn btn-primary"
+          onClick={(event) => {
+            event.preventDefault()
+            //create user after click submit
+            this.props.createUser(this.firstName.value, this.lastName.value)
+            console.log(this.firstName.value)
+          }}
+        >Submit</button>
 
-            <ul id="completedUserList" className="list-unstyled">
-            </ul>
+        <ul id="completedUserList" className="list-unstyled">
+        </ul>
+
+        <hr></hr>
+
+        {/* list of users in the blockchain */}
+        <div>
+          <p>จำนวน user ใน Blockchain => {this.props.count}</p>
+          {this.props.users.map((user) =>
+            <li key={user.id}>
+              <span>ชื่อ</span>&nbsp;{user.firstName}&nbsp;
+              <span>นามสกุล</span>&nbsp;{user.lastName}&nbsp;
+            </li>
+          )}
         </div>
+
+      </div>
+
+
     );
   }
 }

@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Web3 from 'web3'
 import './App.css';
-import {abi, address} from './config'
+import { abi, address } from './config'
 import UserList from './userList'
 
-class App extends Component{
+class App extends Component {
   componentWillMount() {
     this.loadBlockChainData()
   }
 
-  async loadBlockChainData(){
+  async loadBlockChainData() {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545 ")
     await window.ethereum.enable();
     const network = await web3.eth.net.getNetworkType()
@@ -27,7 +27,7 @@ class App extends Component{
     //get nummber of user inside blockchain
     const userCount = await userList.methods.userCount().call()
     this.setState({ userCount })
-    console.log(userCount)
+    console.log("count: " + userCount)
 
     //get all users from blockchain
     for (var i = 1; i <= userCount; i++) {
@@ -39,13 +39,13 @@ class App extends Component{
 
     // const task = await todoList.methods.tasks(1).call()
     // this.setState({ tasks: task })
-    
+
     console.log("users", this.state.users)
-    this.setState({ loading: false})
+    this.setState({ loading: false })
   }
 
   //initialize variable
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       account: '',
@@ -53,29 +53,28 @@ class App extends Component{
       users: [],
       loading: true
     }
-    this.createUser =  this.createUser.bind(this)
+    this.createUser = this.createUser.bind(this)
     // this.toggleCompleted = this.toggleCompleted.bind(this)
   }
-  
+
   //create user and push information to blockchain
   createUser(firstName, lastName) {
     // const x = 0
-    this.setState({ loading: true})
+    this.setState({ loading: true })
     console.log("name:", firstName)
     console.log("lastName:", lastName)
     this.state.userList.methods.createUser(firstName, lastName).send({ from: this.state.account })
-    .once('receipt', (receipt) => {
-        this.setState({ loading: false})
+      .once('receipt', (receipt) => {
+        this.setState({ loading: false })
       }
-    )
+      )
   }
 
   render() {
     return (
-      <div>
-        {/* <h1>Hello, World</h1>
+      <div className="pt-5">
         <p>Your account: {this.state.account}</p>
-        <p>user Count: {this.state.userCount}</p> */}
+        {/* <p>user Count: {this.state.userCount}</p> */}
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
           <a className="navbar-brand col-sm-10" >Zigma</a>
 
@@ -83,12 +82,16 @@ class App extends Component{
         <div className="container-fluid">
           <div className="row">
             <main role="main" className="col-lg-12 d-flex justify-content-center">
-              {this.state.loading 
+              <UserList
+                count={this.state.userCount}
+                users={this.state.users}
+                createUser={this.createUser} />
+              {/* {this.state.loading 
                 ? <div id="loader" className="text-center"><p className="text-center">Loading...</p></div> 
                 : <UserList 
                   users = {this.state.users} 
                   createUser = {this.createUser}/>
-              }
+              } */}
             </main>
           </div>
         </div>

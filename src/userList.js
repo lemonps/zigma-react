@@ -12,22 +12,22 @@ class UserList extends Component {
       <div id="content">
         <form id="form">
           <div className="form-row">
-            <div>
+            <div className = "col">
               <input
                 id="firstName"
                 ref={(input) => { this.firstName = input }}
                 type="text" className="form-control"
-                placeholder="Enter First Name"
+                placeholder="ชื่อ"
                 required />
               <input type="submit" hidden={true} />
             </div>
 
-            <div>
+            <div className = "col">
               <input
                 id="lastName"
                 ref={(input) => { this.lastName = input }}
                 type="text" className="form-control"
-                placeholder="Enter Last Name"
+                placeholder="นามสกุล "
                 required />
               <input type="submit" hidden={true} />
             </div>
@@ -53,7 +53,7 @@ class UserList extends Component {
             id="address"
             ref={(input) => { this.address = input }}
             type="text" className="form-control"
-            placeholder="Enter Address"
+            placeholder="ที่อยู่"
             required />
           <input type="submit" hidden={true} />
 
@@ -61,7 +61,7 @@ class UserList extends Component {
             id="mobileNo"
             ref={(input) => { this.mobileNo = input }}
             type="text" className="form-control"
-            placeholder="Enter Mobile Number"
+            placeholder="หมายเลขโทรศัพท์"
             required />
           <input type="submit" hidden={true} />
 
@@ -69,7 +69,7 @@ class UserList extends Component {
             id="email"
             ref={(input) => { this.email = input }}
             type="text" className="form-control"
-            placeholder="Enter Email"
+            placeholder="อีเมล์"
             required />
           <input type="submit" hidden={true} />
 
@@ -77,7 +77,7 @@ class UserList extends Component {
             id="job"
             ref={(input) => { this.job = input }}
             type="text" className="form-control"
-            placeholder="Enter Job"
+            placeholder="อาชีพ"
             required />
           <input type="submit" hidden={true} />
 
@@ -85,7 +85,7 @@ class UserList extends Component {
             id="age"
             ref={(input) => { this.age = input }}
             type="text" className="form-control"
-            placeholder="Enter Age"
+            placeholder="อายุ"
             required />
           <input type="submit" hidden={true} />
 
@@ -93,7 +93,7 @@ class UserList extends Component {
             id="salary"
             ref={(input) => { this.salary = input }}
             type="text" className="form-control"
-            placeholder="Enter Salary"
+            placeholder="เงินเดือน"
             required />
           <input type="submit" hidden={true} />
 
@@ -101,7 +101,7 @@ class UserList extends Component {
             id="nationalID"
             ref={(input) => { this.nationalID = input }}
             type="text" className="form-control"
-            placeholder="Enter National ID"
+            placeholder="หมายเลขบัตรประชาชน"
             required />
           <input type="submit" hidden={true} />
         </form>

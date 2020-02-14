@@ -14,3 +14,13 @@ yarn.lock
 .yarn
 .env
 
+.gitignore
+smartContract/
+
+
+
+smartContract
+
+__MACOSX/._smartContract
+
+__MACOSX/

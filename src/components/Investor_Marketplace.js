@@ -158,10 +158,6 @@ const InvestorMarketPlace = () => {
     setBorrowerReqsDummies(updatedBorrowerReqs);
   };
 
-  useEffect(() => {
-    console.log(borrowerReqsDummies);
-  }, [borrowerReqsDummies]);
-
   return (
     <Grid fluid>
       <Row>

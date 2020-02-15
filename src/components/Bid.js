@@ -1,34 +1,40 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import { Panel, Row, Col, Grid, Dropdown, Icon } from "rsuite";
 
-const TxDetail = props => {
-  // Get TxId
-  const {
-    match: { params }
-  } = props;
-  console.log(params);
+class Bid extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { txId: "" };
 
-  const [Interest, setInterest] = useState("");
-  const handleSubmit = event => {
-    alert("A name was submitted: " + Interest);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ txId: event.target.value });
+  }
+
+  handleSubmit(event) {
+    alert("Your favorite flavor is: " + this.state.txId);
     event.preventDefault();
-  };
+  }
 
-  return (
-    <Panel>
-      <form onSubmit={handleSubmit}>
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
         <label>
-          Interest:
-          <input
-            type="text"
-            value={Interest}
-            onChange={text => setInterest(text)}
-          />
+          Pick your favorite flavor:
+          <select value={this.state.txId} onChange={this.handleChange}>
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
         </label>
         <input type="submit" value="Submit" />
       </form>
-    </Panel>
-  );
-};
+    );
+  }
+}
 
-export default TxDetail;
+export default Bid;

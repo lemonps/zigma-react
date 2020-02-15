@@ -26,6 +26,9 @@ const AppNavbar = () => {
                 Market Place
               </NavLink>
             </Dropdown.Item>
+            <Dropdown.Item>
+              <NavLink to="/bid/4822">bid</NavLink>
+            </Dropdown.Item>
           </Dropdown>
         </Nav>
         <Nav pullRight>

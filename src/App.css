@@ -2,23 +2,22 @@ main {
   margin-top: 60px;
 }
 
-
 form {
   width: 350px;
   margin-bottom: 20px;
 }
 
-ul{
+ul {
   margin-bottom: 0px;
 }
 
-#completedTaskList .content{
+#completedTaskList .content {
   color: grey;
   text-decoration: line-through;
 }
 
 #backButton {
-  background-color: #F7BE16;
+  background-color: #f7be16;
   border: none;
   color: white;
   text-align: center;
@@ -31,8 +30,8 @@ ul{
   margin-top: 20px;
 }
 
-#nextButton{
-  background-color: #F7BE16;
+#nextButton {
+  background-color: #f7be16;
   border: none;
   color: white;
   text-align: center;
@@ -40,21 +39,22 @@ ul{
   display: inline-block;
   font-size: 16px;
   width: 30%;
-  
+
   margin-right: 20%;
   margin-top: 20px;
 }
 
-input{
-  float:center;
-  width:150px;
-  margin-bottom:10px;
+input {
+  float: center;
+  width: 150px;
+  margin-bottom: 10px;
 }
 
-#navZigma{
+#navZigma {
   background-color: #344381;
 }
 
+<<<<<<< HEAD
 /* #borrowerDetailContainer{
   background-color: #F5F5F5;
   margin-top: 10%;
@@ -77,3 +77,9 @@ input{
 
 
 
+=======
+p {
+  font-family: "Sarabun";
+  font-size: 40;
+}
+>>>>>>> 11da990f6eafa173ce714c31c1d963f2903d6c70

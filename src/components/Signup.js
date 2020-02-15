@@ -19,22 +19,22 @@ class Signup extends Component {
     console.log("account", account[0]);
 
     //web3 link to smart contract
-    const userList = new web3.eth.Contract(abi, address);
-    this.setState({ userList });
-    console.log("userList", userList);
+    // const userList = new web3.eth.Contract(abi, address);
+    // this.setState({ userList });
+    // console.log("userList", userList);
 
     //get nummber of user inside blockchain
-    const userCount = await userList.methods.userCount().call();
-    this.setState({ userCount });
-    console.log("count: " + userCount);
+    // const userCount = await userList.methods.userCount().call();
+    // this.setState({ userCount });
+    // console.log("count: " + userCount);
 
-    //get all users from blockchain
-    for (var i = 1; i <= userCount; i++) {
-      const user = await userList.methods.users(i).call();
-      this.setState({
-        users: [...this.state.users, user]
-      });
-    }
+    // //get all users from blockchain
+    // for (var i = 1; i <= userCount; i++) {
+    //   const user = await userList.methods.users(i).call();
+    //   this.setState({
+    //     users: [...this.state.users, user]
+    //   });
+    // }
 
     // const task = await todoList.methods.tasks(1).call()
     // this.setState({ tasks: task })
@@ -69,6 +69,7 @@ class Signup extends Component {
         this.setState({ loading: false });
       });
   }
+  
   render() {
     return (
       <div className="pt-5">

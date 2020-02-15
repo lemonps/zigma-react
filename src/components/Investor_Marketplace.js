@@ -99,7 +99,7 @@ const BorrowerRequestCard = props => {
                 fontFamily: "SarabunBold"
               }}
             >
-              <Link to={`/txDetail/${props.tx}`}>เสนอดอกเบี้ย</Link>
+              <Link to={`/bid/${props.txId}`}>เสนอดอกเบี้ย</Link>
             </p>
           </Col>
         </Row>

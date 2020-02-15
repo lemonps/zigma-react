@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Checkbox } from 'react-bootstrap';
 
 class UserList extends Component {
 
@@ -10,101 +11,110 @@ class UserList extends Component {
   render() {
     return (
       <div id="content">
-        <form id="form">
-          <div className="form-row">
-            <div className = "col">
-              <input
-                id="firstName"
-                ref={(input) => { this.firstName = input }}
-                type="text" className="form-control"
-                placeholder="ชื่อ"
-                required />
-              <input type="submit" hidden={true} />
-            </div>
+        <div className="row">
+          <div calssName="col">
+            <form id="form1">
+              {/* <div className="form-group"> */}
+              <div className = "col">
+                  <div className="form-group">
+                    <label>ชื่อ</label>
+                    <input
+                      id="firstName"
+                      ref={(input) => { this.firstName = input }}
+                      type="text" className="form-control"
+                      required />
+                    <input type="submit" hidden={true} />
+                  </div>
+              </div>
 
-            <div className = "col">
-              <input
-                id="lastName"
-                ref={(input) => { this.lastName = input }}
-                type="text" className="form-control"
-                placeholder="นามสกุล "
-                required />
-              <input type="submit" hidden={true} />
-            </div>
+              <div className = "col">
+                <div className="form-group">
+                  <label>นามสกุล</label>
+                  <input
+                    id="lastName"
+                    ref={(input) => { this.lastName = input }}
+                    type="text" className="form-control"
+                    required />
+                  <input type="submit" hidden={true} />
+                </div>
+                {/* </div> */}
+
+                <div className="form-group">
+                  <label>หมายเลขโทรศัพท์</label>
+                  <input
+                    id="mobileNo"
+                    ref={(input) => { this.mobileNo = input }}
+                    type="text" className="form-control"
+                    required />
+                  <input type="submit" hidden={true} />
+                </div>
+
+                <div className="form-group">
+                  <label>อีเมล</label>
+                  <input
+                    id="email"
+                    ref={(input) => { this.email = input }}
+                    type="text" className="form-control"
+                    required />
+                  <input type="submit" hidden={true} />
+                </div>
+
+                <div className="form-group">
+                  <label>ที่อยู่</label>
+                  <textarea
+                    id="address"
+                    ref={(input) => { this.address = input }}
+                    type="text" className="form-control"
+                    required />
+                  <textarea type="submit" hidden={true} />              
+                </div>
+              </div>
+            </form>
           </div>
+          <div className="col">
+            <form id="form2">
+              <div className="form-group">
+                <label>หมายเลขบัตรประชาชน</label>
+                <input
+                  id="nationalID"
+                  ref={(input) => { this.nationalID = input }}
+                  type="text" className="form-control"
+                  required />
+                <input type="submit" hidden={true} />
+              </div>
 
-          {/* <input 
-                id="firstName" 
-                ref = {(input) => {this.firstName = input}} 
-                type="text" className="form-control" 
-                placeholder="Enter First Name" 
-                required/>
-              <input type="submit" hidden= {true}/>  */}
+              <div className="form-group">
+                <label>วัน/เดือน/ปีเกิด</label>
+                <input
+                  id="birthDate"
+                  ref={(input) => { this.birthDate = input }}
+                  type="text" className="form-control"
+                  required />
+                <input type="submit" hidden={true} />
+              </div>
 
-          {/* <input 
-                id="lastName" 
-                ref = {(input) => {this.lastName = input}} 
-                type="text" className="form-control" 
-                placeholder="Enter Last Name" 
-                required/>
-              <input type="submit" hidden= {true}/> */}
+              <div className="form-group">
+                <label>เงินเดือน</label>
+                <input
+                  id="salary"
+                  ref={(input) => { this.salary = input }}
+                  type="text" className="form-control"
+                  required />
+                <input type="submit" hidden={true} />
+              </div>
 
-          <input
-            id="address"
-            ref={(input) => { this.address = input }}
-            type="text" className="form-control"
-            placeholder="ที่อยู่"
-            required />
-          <input type="submit" hidden={true} />
-
-          <input
-            id="mobileNo"
-            ref={(input) => { this.mobileNo = input }}
-            type="text" className="form-control"
-            placeholder="หมายเลขโทรศัพท์"
-            required />
-          <input type="submit" hidden={true} />
-
-          <input
-            id="email"
-            ref={(input) => { this.email = input }}
-            type="text" className="form-control"
-            placeholder="อีเมล์"
-            required />
-          <input type="submit" hidden={true} />
-
-          <input
-            id="job"
-            ref={(input) => { this.job = input }}
-            type="text" className="form-control"
-            placeholder="อาชีพ"
-            required />
-          <input type="submit" hidden={true} />
-
-          <input
-            id="age"
-            ref={(input) => { this.age = input }}
-            type="text" className="form-control"
-            placeholder="อายุ"
-            required />
-          <input type="submit" hidden={true} />
-
-          <input
-            id="salary"
-            ref={(input) => { this.salary = input }}
-            type="text" className="form-control"
-            placeholder="เงินเดือน"
-            required />
-          <input type="submit" hidden={true} />
-
-          <input
-            id="nationalID"
-            ref={(input) => { this.nationalID = input }}
-            type="text" className="form-control"
-            placeholder="หมายเลขบัตรประชาชน"
-            required />
-          <input type="submit" hidden={true} />
-        </form>
+              <div className="form-group">
+                <label>อาชีพ</label>
+                <input
+                  id="่job"
+                  ref={(input) => { this.job = input }}
+                  type="text" className="form-control"
+                  required />
+                <input type="submit" hidden={true} />
+              </div>
+            </form>
+          </div>
+        </div>
 
         {/* <ul id="userList" className="list-unstyled">
               { this.props.users.map((user, key) => {
@@ -130,22 +140,29 @@ class UserList extends Component {
               })}
             </ul> */}
 
-        <button type="button" className="btn btn-primary"
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="termConditionCheck1"/>
+          <label class="form-check-label" for="termConditionCheck1">
+            ยอมรับเงื่อนไขและข้อตกลง
+          </label>
+        </div>
+
+        {/* <button type="button" className="btn btn-primary"
           onClick={(event) => {
             event.preventDefault()
             //create user after click submit
             this.props.createUser(this.firstName.value, this.lastName.value)
             console.log(this.firstName.value)
           }}
-        >Submit</button>
+        >Submit</button> */}
 
-        <ul id="completedUserList" className="list-unstyled">
-        </ul>
+        {/* <ul id="completedUserList" className="list-unstyled">
+        </ul> */}
 
-        <hr></hr>
+        {/* <hr></hr> */}
 
         {/* list of users in the blockchain */}
-        <div>
+        {/* <div>
           <p>จำนวน user ใน Blockchain => {this.props.count}</p>
           {this.props.users.map((user) =>
             <li key={user.id}>
@@ -153,11 +170,30 @@ class UserList extends Component {
               <span>นามสกุล</span>&nbsp;{user.lastName}&nbsp;
             </li>
           )}
-        </div>
-
+        </div> */}
+        <div class="row">
+          <div class="col">
+            <button type="button" className="btn btn-primary" id="backButton"
+              onClick={(event) => {
+                event.preventDefault()
+                //create user after click submit
+                this.props.createUser(this.firstName.value, this.lastName.value)
+                console.log(this.firstName.value)
+              }}
+            >Back</button>
+          </div>
+          <div class="col">
+          <button type="button" className="btn btn-primary" id="nextButton"
+              onClick={(event) => {
+                event.preventDefault()
+                //create user after click submit
+                this.props.createUser(this.firstName.value, this.lastName.value)
+                console.log(this.firstName.value)
+              }}
+            >Next</button>
+          </div>
+         </div>
       </div>
-
-
     );
   }
 }

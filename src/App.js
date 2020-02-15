@@ -12,9 +12,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <AppNavbar />
-        <Route path="/home" component={Signup} />
+        <Route path="/signup" component={Signup} />
         <Route path="/signin" component={Signin} />
-        <Route path="/investormarketplace" component={InvestorMarketPlace} />
+        {/* <Route path="/investormarketplace" component={InvestorMarketPlace} /> */}
       </BrowserRouter>
     );
   }

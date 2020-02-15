@@ -74,9 +74,9 @@ class Signup extends Component {
       <div className="pt-5">
         <p>Your account: {this.state.account}</p>
         {/* <p>user Count: {this.state.userCount}</p> */}
-        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        {/* <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
           <a className="navbar-brand col-sm-10">Zigma</a>
-        </nav>
+        </nav> */}
         <div className="container-fluid">
           <div className="row">
             <main

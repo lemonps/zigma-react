@@ -1,13 +1,15 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import { Navbar, Nav, Dropdown, Icon } from "rsuite";
 
 const AppNavbar = () => {
   return (
     <Navbar>
       <Navbar.Header>
-        <a href="/home" className="navbar-brand logo">
+        {/* <a href="/home" className="navbar-brand logo">
           ZIGMA
-        </a>
+        </a> */}
+        <NavLink to="/home">ZIGMA</NavLink>
       </Navbar.Header>
       <Navbar.Body>
         <Nav>
@@ -21,6 +23,16 @@ const AppNavbar = () => {
           </Dropdown>
         </Nav>
         <Nav pullRight>
+          <Nav.Item>
+            {/* <a href="/signup" className="navbar">
+              Signup
+            </a> */}
+            <NavLink to="/signup">Signup</NavLink>
+          </Nav.Item>
+          <Nav.Item>
+            {/* Signin */}
+            <NavLink to="/signin">Signin</NavLink>
+          </Nav.Item>
           <Nav.Item icon={<Icon icon="cog" />}>Settings</Nav.Item>
         </Nav>
       </Navbar.Body>

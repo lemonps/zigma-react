@@ -4,22 +4,16 @@ import { Navbar, Nav, Dropdown, Icon } from "rsuite";
 
 const AppNavbar = () => {
   return (
-    <Navbar>
+    <Navbar style={{ background: "#344381" }}>
       <Navbar.Header>
-        {/* <a href="/home" className="navbar-brand logo">
-          ZIGMA
-        </a> */}
         <Nav>
           <NavLink to="/home" className="navbar-brand logo">
-            ZIGMA
+            <p style={{ padding: 10 }}>ZIGMA</p>
           </NavLink>
         </Nav>
       </Navbar.Header>
       <Navbar.Body>
         <Nav>
-          {/* <Nav.Item icon={<Icon icon="home" />}>Home</Nav.Item> */}
-          {/* <Nav.Item>News</Nav.Item> */}
-          {/* <Nav.Item>Products</Nav.Item> */}
           <Dropdown title="My Loan">
             <Dropdown.Item>
               <NavLink to="/investormarketplace" className="navbar-brand logo">

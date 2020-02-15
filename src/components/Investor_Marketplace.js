@@ -248,7 +248,7 @@ const InvestorMarketPlace = () => {
         </Col>
         <Col md={14} lg={18} style={{ padding: 8 }}>
           <Panel
-            style={{ background: "#344381", height: 800, overflowY: "scroll" }}
+            style={{ background: "#495fb8", height: 800, overflowY: "scroll" }}
           >
             <Row>
               <Col>

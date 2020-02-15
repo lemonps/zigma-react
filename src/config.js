@@ -1,5 +1,5 @@
 //abi and address after smart contract migrate to blockchain (copy from UserInfoList.json)
-export const address = "0xeC2E9120165B1a3261Aa43cdCfe6b7F6D5FEDB25"
+export const address = "0xa4Fd721e1ccBfF0b5Fb77ce85944C53F372c1dE3"
 export const abi = [
   {
     "inputs": [],
@@ -12,30 +12,43 @@ export const abi = [
     "inputs": [
       {
         "indexed": false,
+        "internalType": "address",
+        "name": "winner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
         "internalType": "uint256",
-        "name": "id",
+        "name": "amount",
         "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "firstName",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "lastName",
-        "type": "string"
       }
     ],
-    "name": "UserCreated",
+    "name": "AuctionEnded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "bidder",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "lowestRateDecrese",
     "type": "event"
   },
   {
     "constant": true,
     "inputs": [],
-    "name": "userCount",
+    "name": "auctionEndTime",
     "outputs": [
       {
         "internalType": "uint256",
@@ -49,29 +62,88 @@ export const abi = [
   },
   {
     "constant": true,
-    "inputs": [
+    "inputs": [],
+    "name": "borrower",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "count",
+    "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
       }
     ],
-    "name": "users",
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "loan_status",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "lowestBidRate",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "id",
+        "name": "",
         "type": "uint256"
-      },
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "lowestBidder",
+    "outputs": [
       {
-        "internalType": "string",
-        "name": "firstName",
-        "type": "string"
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "txId",
+    "outputs": [
       {
-        "internalType": "string",
-        "name": "lastName",
-        "type": "string"
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -82,17 +154,36 @@ export const abi = [
     "constant": false,
     "inputs": [
       {
-        "internalType": "string",
-        "name": "_firstName",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_lastName",
-        "type": "string"
+        "internalType": "uint256",
+        "name": "interestRate",
+        "type": "uint256"
       }
     ],
-    "name": "createUser",
+    "name": "bid",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "withdraw",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "auctionEnd",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",

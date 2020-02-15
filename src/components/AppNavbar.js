@@ -8,27 +8,21 @@ const AppNavbar = () => {
       <Navbar.Header>
         <Nav>
           <NavLink to="/home" className="navbar-brand logo">
-            <p style={{ padding: 10 }}>ZIGMA</p>
+            <p style={{ padding: 10, color: "white" }}>ZIGMA</p>
           </NavLink>
         </Nav>
       </Navbar.Header>
       <Navbar.Body>
         <Nav>
-          <Dropdown title="My Loan">
-            <Dropdown.Item>
-              <NavLink to="/investormarketplace" className="navbar-brand logo">
-                Market Place
-              </NavLink>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <NavLink to="/borrower_dashBoard" className="navbar-brand logo">
-                Borrower DashBoard
-              </NavLink>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <NavLink to="/bid/4822">bid</NavLink>
-            </Dropdown.Item>
-          </Dropdown>
+          <Nav.Item>
+            <NavLink to="/investormarketplace">Market Place</NavLink>
+          </Nav.Item>
+          <Nav.Item>
+            <NavLink to="/borrower_dashBoard">Borrower DashBoard</NavLink>
+          </Nav.Item>
+          <Nav.Item>
+            <NavLink to="/bid/555">Borrower DashBoard</NavLink>
+          </Nav.Item>
         </Nav>
         <Nav pullRight>
           <Nav.Item>

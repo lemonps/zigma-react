@@ -8,16 +8,6 @@ function kFormatter(num) {
     : Math.sign(num) * Math.abs(num);
 }
 
-// const Card = props => {
-//   return (
-//     <div style={{ padding: 12 }}>
-//       <Panel header={props.asset} shaded style={{ background: "white" }}>
-//         <p>{props.asset}</p>
-//       </Panel>
-//     </div>
-//   );
-// };
-
 const CustomDropdown = ({ ...props }) => (
   <div style={{ padding: 3 }}>
     <Dropdown
@@ -33,12 +23,12 @@ const CustomDropdown = ({ ...props }) => (
 );
 
 const BorrowerRequestCard = props => {
-  console.log(props);
   return (
     <Panel>
       <div
         style={{
           height: 120,
+          width: 280,
           background: "white",
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8
@@ -55,7 +45,7 @@ const BorrowerRequestCard = props => {
                 style={{
                   fontFamily: "SarabunBold",
                   textAlign: "center",
-                  fontSize: 50,
+                  fontSize: 36,
                   color: "#F7BE16"
                 }}
               >
@@ -64,10 +54,12 @@ const BorrowerRequestCard = props => {
             </div>
           </Col>
           <Col md={12}>
-            <div style={{ float: "right", padding: 5 }}>
+            <div style={{ float: "right", padding: 5, alignItems: "center" }}>
               <p>ประเภทสินทรัพย์</p>
               <p>{props.testText}</p>
-              <Icon icon="car" size="5x" />
+              <div style={{ float: "right" }}>
+                <Icon icon="car" size="3x" />
+              </div>
             </div>
           </Col>
         </Row>
@@ -75,7 +67,8 @@ const BorrowerRequestCard = props => {
       <div
         style={{
           height: 40,
-          background: props.interested ? "#344381" : "#f5f5f5",
+          width: 280,
+          background: props.interested ? "#47589e" : "#f5f5f5",
           borderBottomLeftRadius: 8,
           borderBottomRightRadius: 8
         }}
@@ -99,7 +92,7 @@ const BorrowerRequestCard = props => {
                 fontFamily: "SarabunBold"
               }}
             >
-              <Link to={`/bid/${props.txId}`}>เสนอดอกเบี้ย</Link>
+              เสนอดอกเบี้ย
             </p>
           </Col>
         </Row>
@@ -144,30 +137,38 @@ const InvestorMarketPlace = () => {
     }
   ]);
 
-  const [selectedBorrowerReq, setSelectedBorrowerReq] = useState(
-    borrowerReqsDummies[0]
-  );
+  const [selectedBorrowerReq, setSelectedBorrowerReq] = useState("");
   const onBorrowerReqSelected = item => {
     let updatedBorrowerReqs = [...borrowerReqsDummies];
     let targetObj = updatedBorrowerReqs.filter(
       borrowerReq => borrowerReq.txId === item.txId
     )[0];
 
+    let oldReq = { ...selectedBorrowerReq };
+
     targetObj.interested = !targetObj.interested;
-    targetObj.testText = "nara";
+    if (item.txId === selectedBorrowerReq.txId) {
+      //same
+      setSelectedBorrowerReq("");
+    } else {
+      // another
+      oldReq.interested = !oldReq.interested;
+      setSelectedBorrowerReq(targetObj);
+    }
+
     setBorrowerReqsDummies(updatedBorrowerReqs);
   };
 
   return (
     <Grid fluid>
       <Row>
-        <Col md={10} lg={6} style={{ padding: 8 }}>
+        <Col md={10} lg={6} style={{ padding: 8, height: 420 }}>
           {/* Grey Container */}
           <Panel
             shaded
             style={{
               background: "#f0f0f0",
-              height: 500,
+              height: "100%",
               borderRadius: 5,
               overflowY: "scroll"
             }}
@@ -245,10 +246,101 @@ const InvestorMarketPlace = () => {
               </Col>
             </Row>
           </Panel>
-        </Col>
-        <Col md={14} lg={18} style={{ padding: 8 }}>
+
           <Panel
-            style={{ background: "#495fb8", height: 800, overflowY: "scroll" }}
+            shaded
+            style={{
+              background: selectedBorrowerReq.txId ? "#ffffff" : "#b5b5b5",
+              height: 400,
+              borderRadius: 5,
+              marginTop: 20
+            }}
+          >
+            <Row style={{ marginTop: 20, marginBottom: 20 }}>
+              <Col md={24}>
+                <p
+                  style={{
+                    fontSize: 26,
+                    alignSelf: "center",
+                    textAlign: "center",
+                    fontFamily: "SarabunBold",
+                    color: selectedBorrowerReq.txId ? "#5d77de" : "#e6e6e6"
+                  }}
+                >
+                  รายละเอียดสินเชื่อ
+                </p>
+                {selectedBorrowerReq.txId ? null : (
+                  <p
+                    style={{
+                      fontSize: 26,
+                      alignSelf: "center",
+                      textAlign: "center",
+                      fontFamily: "SarabunBold",
+                      color: selectedBorrowerReq.txId ? "#5d77de" : "#e6e6e6"
+                    }}
+                  >
+                    (ยังไม่มีรายการที่คุณเลือก)
+                  </p>
+                )}
+              </Col>
+            </Row>
+            {selectedBorrowerReq.txId ? (
+              <Row>
+                <Col md={12} lg={12}>
+                  <p
+                    style={{
+                      fontSize: 16,
+                      textAlign: "start",
+                      fontFamily: "SarabunBold"
+                    }}
+                  >
+                    ดอกเบี้ยต่ำสุด ณ ขณะนี้
+                  </p>
+                  <p
+                    style={{
+                      fontSize: 40,
+                      textAlign: "center",
+                      fontFamily: "SarabunBold"
+                    }}
+                  >
+                    {selectedBorrowerReq.minInterest
+                      ? selectedBorrowerReq.minInterest
+                      : "3.5%"}
+                  </p>
+                </Col>
+                <Col md={12} lg={12}>
+                  <p
+                    style={{
+                      fontSize: 16,
+                      textAlign: "start",
+                      fontFamily: "SarabunBold"
+                    }}
+                  >
+                    จำนวนการ Bid ดอกเบี้ย
+                  </p>
+                  <p
+                    style={{
+                      fontSize: 40,
+                      textAlign: "center",
+                      fontFamily: "SarabunBold"
+                    }}
+                  >
+                    {selectedBorrowerReq.numberOfBid
+                      ? `${selectedBorrowerReq.numberOfBid} ครั้ง`
+                      : "13 ครั้ง"}
+                  </p>
+                </Col>
+              </Row>
+            ) : null}
+          </Panel>
+        </Col>
+        <Col md={14} lg={18} style={{ padding: 8, height: 840 }}>
+          <Panel
+            style={{
+              background: "#ededed",
+              overflowY: "scroll",
+              height: "100%"
+            }}
           >
             <Row>
               <Col>
@@ -256,8 +348,7 @@ const InvestorMarketPlace = () => {
                   style={{
                     fontSize: 26,
                     alignSelf: "center",
-                    fontFamily: "SarabunBold",
-                    color: "white"
+                    fontFamily: "SarabunBold"
                   }}
                 >
                   ผลลัพธ์การค้นหา
@@ -266,11 +357,13 @@ const InvestorMarketPlace = () => {
             </Row>
             <Row>
               {borrowerReqsDummies.map(item => (
-                <Col md={12} lg={6}>
+                <Col lg={6} md={6} sm={24}>
                   <BorrowerRequestCard
                     asset={item.asset}
                     loan={item.loan}
-                    interested={item.interested}
+                    interested={
+                      selectedBorrowerReq.txId === item.txId ? true : false
+                    }
                     onSelected={() => onBorrowerReqSelected(item)}
                     tx={item}
                   />

@@ -17,6 +17,7 @@ class App extends Component {
         <Route path="/signin" component={Signin} />
         <Route path="/borrowerdetail" component={BorrowerDetail} />
         {/* <Route path="/investormarketplace" component={InvestorMarketPlace} /> */}
+        <Route path="/investormarketplace" component={InvestorMarketPlace} />
       </BrowserRouter>
     );
   }

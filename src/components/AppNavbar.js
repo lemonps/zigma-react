@@ -9,24 +9,27 @@ const AppNavbar = () => {
         {/* <a href="/home" className="navbar-brand logo">
           ZIGMA
         </a> */}
-        <NavLink to="/home">ZIGMA</NavLink>
+        <Nav>
+          <NavLink to="/home" className="navbar-brand logo">
+            ZIGMA
+          </NavLink>
+        </Nav>
       </Navbar.Header>
       <Navbar.Body>
         <Nav>
-          <Nav.Item icon={<Icon icon="home" />}>Home</Nav.Item>
-          <Nav.Item>News</Nav.Item>
-          <Nav.Item>Products</Nav.Item>
-          <Dropdown title="About">
-            <Dropdown.Item>Company</Dropdown.Item>
-            <Dropdown.Item>Team</Dropdown.Item>
-            <Dropdown.Item>Contact</Dropdown.Item>
+          {/* <Nav.Item icon={<Icon icon="home" />}>Home</Nav.Item> */}
+          {/* <Nav.Item>News</Nav.Item> */}
+          {/* <Nav.Item>Products</Nav.Item> */}
+          <Dropdown title="My Loan">
+            <Dropdown.Item>
+              <NavLink to="/investormarketplace" className="navbar-brand logo">
+                Market Place
+              </NavLink>
+            </Dropdown.Item>
           </Dropdown>
         </Nav>
         <Nav pullRight>
           <Nav.Item>
-            {/* <a href="/signup" className="navbar">
-              Signup
-            </a> */}
             <NavLink to="/signup">Signup</NavLink>
           </Nav.Item>
           <Nav.Item>

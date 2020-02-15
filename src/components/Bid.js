@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 import React, { Component } from "react";
+=======
+import React, { useState } from "react";
+import { abi, address } from "../config";
+import Web3 from "web3";
+>>>>>>> Stashed changes
 import { Panel, Row, Col, Grid, Dropdown, Icon } from "rsuite";
 
 class Bid extends Component {
@@ -23,6 +29,7 @@ class Bid extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
+<<<<<<< Updated upstream
           Pick your favorite flavor:
           <select value={this.state.txId} onChange={this.handleChange}>
             <option value="grapefruit">Grapefruit</option>
@@ -30,6 +37,14 @@ class Bid extends Component {
             <option value="coconut">Coconut</option>
             <option value="mango">Mango</option>
           </select>
+=======
+          Interest:
+          <input
+            type="text"
+            value={Interest}
+            onChange={inputObj => setInterest(inputObj.target.value)}
+          />
+>>>>>>> Stashed changes
         </label>
         <input type="submit" value="Submit" />
       </form>

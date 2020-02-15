@@ -17,7 +17,7 @@ class Bid extends Component {
   }
 
   handleSubmit(event) {
-    alert("Your favorite flavor is: " + this.state.txId);
+    alert("Your favorite flavor is: " + this.state.Interest);
     event.preventDefault();
   }
 
@@ -30,7 +30,7 @@ class Bid extends Component {
             type="text"
             value={this.state.Interest}
             onChange={inputObj =>
-              this.state.handleChange(inputObj.target.value)
+              this.handleChange(inputObj)
             }
           />
         </label>

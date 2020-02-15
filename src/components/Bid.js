@@ -29,7 +29,7 @@ class Bid extends Component {
           <input
             type="text"
             value={Interest}
-            onChange={text => setInterest(text)}
+            onChange={inputObj => setInterest(inputObj.target.value)}
           />
         </label>
         <input type="submit" value="Submit" />

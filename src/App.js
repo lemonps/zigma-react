@@ -14,7 +14,7 @@ class App extends Component {
         <AppNavbar />
         <Route path="/signup" component={Signup} />
         <Route path="/signin" component={Signin} />
-        {/* <Route path="/investormarketplace" component={InvestorMarketPlace} /> */}
+        <Route path="/investormarketplace" component={InvestorMarketPlace} />
       </BrowserRouter>
     );
   }

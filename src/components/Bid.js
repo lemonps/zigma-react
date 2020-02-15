@@ -28,10 +28,8 @@ class Bid extends Component {
           Interest:
           <input
             type="text"
-            value={this.state.Interest}
-            onChange={inputObj =>
-              this.state.handleChange(inputObj.target.value)
-            }
+            value={Interest}
+            onChange={text => setInterest(text)}
           />
         </label>
         <input type="submit" value="Submit" />

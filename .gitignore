@@ -24,3 +24,5 @@ smartContract
 __MACOSX/._smartContract
 
 __MACOSX/
+
+src/config.js

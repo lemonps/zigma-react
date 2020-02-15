@@ -8,6 +8,7 @@ import BorrowerDetail from "./components/borrowerDetail";
 import InvestorMarketPlace from "./components/Investor_Marketplace";
 import "rsuite/dist/styles/rsuite-default.css";
 import Bid from "./components/Bid";
+import borrower_dashBoard from "./components/borrower_dashBoard";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
         <Route path="/borrowerdetail" component={BorrowerDetail} />
         {/* <Route path="/investormarketplace" component={InvestorMarketPlace} /> */}
         <Route path="/investormarketplace" component={InvestorMarketPlace} />
+        <Route path="/borrower_dashBoard" component={borrower_dashBoard} />
         <Route path="/bid/:txId" component={Bid} />
       </BrowserRouter>
     );

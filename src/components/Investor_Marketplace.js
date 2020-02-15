@@ -11,6 +11,20 @@ const Card = props => {
   );
 };
 
+const CustomDropdown = ({ ...props }) => (
+  <div style={{ padding: 3, marginTop: 20 }}>
+    {props.label ? (
+      <p style={{ fontFamily: "Sarabun" }}>{props.label}</p>
+    ) : null}
+
+    <Dropdown {...props}>
+      {props.data.map(item => (
+        <Dropdown.Item>{item}</Dropdown.Item>
+      ))}
+    </Dropdown>
+  </div>
+);
+
 const InvestorMarketPlace = () => {
   return (
     <Grid fluid>
@@ -26,14 +40,20 @@ const InvestorMarketPlace = () => {
               <div style={{ padding: 12 }}>
                 <p
                   style={{
-                    fontSize: 20,
+                    fontSize: 26,
                     alignSelf: "center",
                     textAlign: "center",
-                    fontFamily: "Sarabun"
+                    fontFamily: "SarabunBold"
                   }}
                 >
                   ค้นหาสินเชื่อตาม
                 </p>
+
+                <CustomDropdown
+                  label="วงเงินกู้"
+                  data={["2500", "3000", "4822"]}
+                  title="เริ่มต้น"
+                />
               </div>
             </Panel>
           </div>

@@ -14,5 +14,7 @@ code {
 
 @font-face {
   font-family: "Sarabun";
+  font-family: "SarabunBold";
   src: local("Sarabun"), url("./fonts/Sarabun-Regular.ttf") format("truetype");
+  src: local("SarabunBold"), url("./fonts/Sarabun-Bold.ttf") format("truetype");
 }

@@ -1,5 +1,5 @@
 //abi and address after smart contract migrate to blockchain (copy from UserInfoList.json)
-export const address = "0xd38553B0cf69a14C2DBF2368A4A1C26c020e78a8"
+export const address = "0xeC2E9120165B1a3261Aa43cdCfe6b7F6D5FEDB25"
 export const abi = [
   {
     "inputs": [],

@@ -161,10 +161,10 @@ const InvestorMarketPlace = () => {
     // console.log("Current Bit Rate: " + errMsg);
   };
 
-  const bidLoan = (txId, interestRate) => {
+  const bidLoan = (interestRate) => {
     console.log("rate:", interestRate);
     loanAuction.methods
-      .bid(txId, interestRate)
+      .bid(interestRate)
       .send({ from: account })
       .then(result => {
         console.log("bid result = ", result);
@@ -172,10 +172,9 @@ const InvestorMarketPlace = () => {
   };
 
   const handleSubmit = event => {
-    alert("Your favorite flavor is: " + formValue.interest);
     console.log("txId:", selectedBorrowerReq.txId);
     console.log("formValue.interest:", formValue.interest);
-    bidLoan(selectedBorrowerReq.txId, formValue.interest);
+    bidLoan(formValue.interest);
     event.preventDefault();
   };
 
@@ -249,12 +248,7 @@ const InvestorMarketPlace = () => {
             shaded
             style={{
               background: "#f0f0f0",
-<<<<<<< HEAD
-              height: 500,
-              width: 300,
-=======
               height: "100%",
->>>>>>> dc23a176f3899583b1774d8fb011ef7983747293
               borderRadius: 5,
               overflowY: "scroll"
             }}
@@ -389,9 +383,10 @@ const InvestorMarketPlace = () => {
                       fontFamily: "SarabunBold"
                     }}
                   >
-                    {selectedBorrowerReq.minInterest
+                    {/* {selectedBorrowerReq.minInterest
                       ? selectedBorrowerReq.minInterest
-                      : "3.5%"}
+                      : "3.5%"} */}
+                      {lowestBidRate ? lowestBidRate : 0}
                   </p>
                 </Col>
                 <Col md={12} lg={12}>
@@ -411,9 +406,10 @@ const InvestorMarketPlace = () => {
                       fontFamily: "SarabunBold"
                     }}
                   >
-                    {selectedBorrowerReq.numberOfBid
+                    {/* {selectedBorrowerReq.numberOfBid
                       ? `${selectedBorrowerReq.numberOfBid} ครั้ง`
-                      : "13 ครั้ง"}
+                      : "13 ครั้ง"} */}
+                      {count ? count : 0}
                   </p>
                 </Col>
               </Row>
@@ -483,6 +479,7 @@ const InvestorMarketPlace = () => {
                   focus={selectedBorrowerReq.txId === item.txId ? true : false}
                   onSelected={() => onBorrowerReqSelected(item)}
                   tx={item}
+                  
                 />
               ))}
             </Row>

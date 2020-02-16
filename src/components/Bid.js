@@ -76,11 +76,11 @@ class Bid extends Component {
 
     const bidCount = await loanAuction.methods.count().call();
     this.setState({ count: bidCount });
-    console.log("count: " + bidCount);
+    console.log("count: " + this.state.count);
 
     const lowestRate = await loanAuction.methods.lowestBidRate().call();
     this.setState({ lowestBidRate: lowestRate });
-    console.log("Current Bit Rate: " + lowestRate);
+    console.log("Current Bit Rate: " + this.state.lowestBidRate);
 
     // const errMsg = await loanAuction.methods.errMsg().call();
     // this.setState({ errMessage: errMsg });
@@ -112,14 +112,14 @@ class Bid extends Component {
   handleSubmit(event) {
     alert("Your favorite flavor is: " + this.state.Interest);
     console.log("txId:", this.state.txId)
-    this.bidLoan(this.state.txId, this.state.Interest);
+    this.bidLoan(this.state.Interest);
     event.preventDefault();
   }
 
-  bidLoan(txId, interestRate) {
+  bidLoan(interestRate) {
     console.log("rate:", interestRate);
     this.state.loanAuction.methods
-      .bid(txId, interestRate)
+      .bid(interestRate)
       .send({ from: this.state.account })
       .then(result => {
         console.log('bid result = ', result)

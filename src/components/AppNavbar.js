@@ -8,11 +8,7 @@ const AppNavbar = () => {
       <Navbar.Header>
         <Nav>
           <NavLink to="/home" className="navbar-brand logo">
-<<<<<<< HEAD
-            <p style={{ padding: 10, color: 'white'}}>ZIGMA</p>
-=======
             <p style={{ padding: 10, color: "white" }}>ZIGMA</p>
->>>>>>> dc23a176f3899583b1774d8fb011ef7983747293
           </NavLink>
         </Nav>
       </Navbar.Header>

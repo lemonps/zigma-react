@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Navbar, Nav, Dropdown, Icon } from "rsuite";
+import ZIGMA from "../images/zigma_logo_new white.png";
 
 const AppNavbar = () => {
   return (

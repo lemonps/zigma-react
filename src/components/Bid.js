@@ -55,7 +55,29 @@ const BorrowerRequestCard = props => {
   );
 };
 
-class Bid extends Component {
+  async loadBlockChainData() {
+    const web3 = new Web3();
+    web3.setProvider(new web3.providers.HttpProvider("http://127.0.0.1:7545"));
+    await window.ethereum.enable();
+
+    const account = await web3.eth.getAccounts();
+    this.setState({ account: account[0] });
+    console.log("account", account[0]);
+
+    //web3 link to smart contract
+    const loanAuction = new web3.eth.Contract(abi, address);
+    this.setState({ loanAuction });
+    console.log("loanAuction", loanAuction);
+
+    const bidCount = await loanAuction.methods.count().call();
+    this.setState({ count: bidCount });
+    console.log("count: " + bidCount);
+
+    const lowestRate = await loanAuction.methods.lowestBidRate().call();
+    this.setState({ lowestBidRate: lowestRate });
+    console.log("Current Bit Rate: " + lowestRate);
+  }
+
   constructor(props) {
     super(props);
     this.state = { txId: "", Interest: "" };
@@ -71,6 +93,16 @@ class Bid extends Component {
   handleSubmit(event) {
     alert("Your favorite flavor is: " + this.state.Interest);
     event.preventDefault();
+  }
+
+  bidLoan(interestRate) {
+    console.log("rate:", interestRate);
+    this.state.loanAuction.methods
+      .bid(interestRate)
+      .send({ from: this.state.account })
+      .then(result => {
+        console.log('bid result = ', result)
+      })
   }
 
   render() {

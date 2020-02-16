@@ -82,7 +82,7 @@ const BorrowerRequestCard = props => {
         style={{
           height: 40,
           width: 280,
-          background: props.interested ? "#47589e" : "#f5f5f5",
+          background: props.focus ? "#47589e" : "#f5f5f5",
           borderBottomLeftRadius: 8,
           borderBottomRightRadius: 8
         }}
@@ -91,7 +91,7 @@ const BorrowerRequestCard = props => {
           <Col md={12} style={{ padding: 15 }}>
             <p
               style={{
-                color: !props.interested ? "#344381" : "white",
+                color: !props.focus ? "#344381" : "white",
                 fontFamily: "SarabunBold"
               }}
             >
@@ -101,12 +101,12 @@ const BorrowerRequestCard = props => {
           <Col md={12} style={{ padding: 15 }}>
             <p
               style={{
-                color: !props.interested ? "#344381" : "white",
+                color: !props.focus ? "#344381" : "white",
                 textAlign: "end",
                 fontFamily: "SarabunBold"
               }}
             >
-              {props.interested ? "ถูกเลือก" : "ดูรายละเอียด"}
+              {props.focus ? "ถูกเลือก" : "ดูรายละเอียด"}
             </p>
           </Col>
         </Row>
@@ -120,34 +120,38 @@ const InvestorMarketPlace = () => {
     {
       asset: "บ้าน",
       loan: 125000,
-      interested: false,
+      focus: false,
       numberOfBid: 7,
       txId: 1,
-      testText: "nora"
+      testText: "nora",
+      minInterest: 3.2
     },
     {
       asset: "รถยนต์",
       loan: 31544,
-      interested: false,
+      focus: false,
       numberOfBid: 4,
       txId: 2,
-      testText: "nora"
+      testText: "nora",
+      minInterest: 3.5
     },
     {
       asset: "รถยนต์",
       loan: 17500,
-      interested: false,
+      focus: false,
       numberOfBid: 9,
       txId: 3,
-      testText: "nora"
+      testText: "nora",
+      minInterest: 4
     },
     {
       asset: "บ้าน",
       loan: 125950,
-      interested: false,
+      focus: false,
       numberOfBid: 3,
       txId: 4,
-      testText: "nora"
+      testText: "nora",
+      minInterest: 2.75
     }
   ]);
 
@@ -160,13 +164,13 @@ const InvestorMarketPlace = () => {
 
     let oldReq = { ...selectedBorrowerReq };
 
-    targetObj.interested = !targetObj.interested;
+    targetObj.focus = !targetObj.focus;
     if (item.txId === selectedBorrowerReq.txId) {
       //same
       setSelectedBorrowerReq("");
     } else {
       // another
-      oldReq.interested = !oldReq.interested;
+      oldReq.focus = !oldReq.focus;
       setSelectedBorrowerReq(targetObj);
     }
 
@@ -177,6 +181,7 @@ const InvestorMarketPlace = () => {
   const handleSubmit = () => {
     // this function provided for submit bid
     console.log(formValue);
+    console.log(selectedBorrowerReq.txId);
   };
 
   return (
@@ -415,7 +420,7 @@ const InvestorMarketPlace = () => {
                   <BorrowerRequestCard
                     asset={item.asset}
                     loan={item.loan}
-                    interested={
+                    interest={
                       selectedBorrowerReq.txId === item.txId ? true : false
                     }
                     onSelected={() => onBorrowerReqSelected(item)}

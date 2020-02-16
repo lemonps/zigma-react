@@ -173,6 +173,12 @@ const InvestorMarketPlace = () => {
     setBorrowerReqsDummies(updatedBorrowerReqs);
   };
 
+  const [formValue, setFormValue] = useState({ interest: "" });
+  const handleSubmit = () => {
+    // this function provided for submit bid
+    console.log(formValue);
+  };
+
   return (
     <Grid fluid>
       <Row>
@@ -347,7 +353,11 @@ const InvestorMarketPlace = () => {
               </Row>
             ) : null}
             {selectedBorrowerReq.txId ? (
-              <Form style={{ margin: "auto" }}>
+              <Form
+                style={{ margin: "auto" }}
+                onChange={formValue => setFormValue(formValue)}
+                formValue={formValue}
+              >
                 <Divider>การเสนอดอกเบี้ยให้กับผู้ขอกู้</Divider>
                 <FlexboxGrid justify="center">
                   <FormGroup>
@@ -363,7 +373,10 @@ const InvestorMarketPlace = () => {
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Button style={{ background: "#0bd6b4", color: "white" }}>
+                    <Button
+                      style={{ background: "#0bd6b4", color: "white" }}
+                      onClick={handleSubmit}
+                    >
                       เสนอดอกเบี้ย
                     </Button>
                   </FormGroup>

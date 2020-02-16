@@ -5,7 +5,7 @@ import ZIGMA from "../images/zigma_logo_new white.png";
 
 const AppNavbar = () => {
   return (
-    <Navbar style={{ background: "#344381" }}>
+    <Navbar style={{ background: "#344381"}}>
       <Navbar.Header>
         <Nav>
           <NavLink to="/home" className="navbar-brand logo">

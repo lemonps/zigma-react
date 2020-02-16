@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Panel, Row, Col, Grid, Dropdown, Icon } from "rsuite";
+import { Panel, Row, Col, Grid, Dropdown, Icon, Button } from "rsuite";
 import { Link } from "react-router-dom";
+import PlusLogo from "../icon/car.svg";
 
 function kFormatter(num) {
   return Math.abs(num) > 999
@@ -23,7 +24,7 @@ const CustomDropdown = ({ ...props }) => (
     <Dropdown
       placement="bottomEnd"
       {...props}
-      style={{ background: "white", width: 200, textAlign: "end" }}
+      style={{ background: "white", width: 100, textAlign: "end" }}
     >
       {props.data.map(item => (
         <Dropdown.Item>{item}</Dropdown.Item>
@@ -38,8 +39,8 @@ const BorrowerRequestCard = props => {
     <Panel>
       <div
         style={{
-          height: 120,
-          width: 200,
+          height: 150,
+          width: 400,
           background: "white",
           borderTopLeftRadius: 8,
           borderTopRightRadius: 8
@@ -49,50 +50,66 @@ const BorrowerRequestCard = props => {
         <Row>
           <Col md={12} style={{ padding: 15 }}>
             <div>
-              <p style={{ fontFamily: "SarabunBold" }}>วงเงินกู้</p>
+              <p style={{ fontFamily: "SarabunBold" }}>ดอกเบี้ย</p>
             </div>
             <div>
               <p
                 style={{
                   fontFamily: "SarabunBold",
-                  textAlign: "center",
-                  fontSize: 50,
+                  fontSize: 30,
                   color: "#F7BE16"
                 }}
               >
-                {kFormatter(props.loan)}
+                {kFormatter(props.interest)}%
+              </p>
+            </div>
+
+            <div>
+              <p style={{ fontFamily: "SarabunBold" }}>ระยะเวลาผ่อนชำระสินเชื่อ</p>
+            </div>
+            <div>
+              <p
+                style={{
+                  fontFamily: "SarabunBold",
+                  fontSize: 30,
+                  color: "#F7BE16"
+                }}
+              >
+                {kFormatter(props.paymentRangeMin)} - {kFormatter(props.paymentRangeMax)}เดือน
               </p>
             </div>
           </Col>
           <Col md={12}>
-            <div style={{ float: "right", padding: 5 }}>
+            {/* <div style={{ float: "right", padding: 8 }}>
               <p>ประเภทสินทรัพย์</p>
               <p>{props.testText}</p>
-              <Icon icon="car" size="5x" />
-            </div>
+              <Icon icon="logo" size="4x" />
+            </div> */}
           </Col>
         </Row>
       </div>
       <div
         style={{
           height: 40,
+          width: 400,
           background: props.interested ? "#344381" : "#f5f5f5",
           borderBottomLeftRadius: 8,
           borderBottomRightRadius: 8
         }}
       >
         <Row>
-          <Col md={12} style={{ padding: 15 }}>
+          <Col md={12} style={{ padding: 12 }}>
             <p
               style={{
                 color: !props.interested ? "#344381" : "white",
-                fontFamily: "SarabunBold"
+                fontFamily: "SarabunBold",
+                textAlign: "end"
               }}
             >
               รายละเอียด
             </p>
           </Col>
-          <Col md={12} style={{ padding: 15 }}>
+          {/* <Col md={12} style={{ padding: 12 }}>
             <p
               style={{
                 color: !props.interested ? "#344381" : "white",
@@ -102,7 +119,7 @@ const BorrowerRequestCard = props => {
             >
               <Link to={`/bid/${props.txId}`}>เสนอดอกเบี้ย</Link>
             </p>
-          </Col>
+          </Col> */}
         </Row>
       </div>
     </Panel>
@@ -112,36 +129,26 @@ const BorrowerRequestCard = props => {
 const InvestorMarketPlace = () => {
   const [borrowerReqsDummies, setBorrowerReqsDummies] = useState([
     {
-      asset: "บ้าน",
-      loan: 125000,
-      interested: false,
-      numberOfBid: 7,
-      txId: 1,
-      testText: "nora"
+        interest: 3.5,
+        interested: true,
+        paymentRangeMin: 12,
+        paymentRangeMax: 48,
+        txId: 1,
+        testText: "nora"
     },
     {
-      asset: "รถยนต์",
-      loan: 31544,
-      interested: false,
-      numberOfBid: 4,
-      txId: 2,
-      testText: "nora"
+        interest: 4.0,
+        interested: true,
+        paymentRangeMin: 24,
+        paymentRangeMax: 48,
+        txId: 2,
     },
     {
-      asset: "รถยนต์",
-      loan: 17500,
-      interested: false,
-      numberOfBid: 9,
-      txId: 3,
-      testText: "nora"
-    },
-    {
-      asset: "บ้าน",
-      loan: 125950,
-      interested: false,
-      numberOfBid: 3,
-      txId: 4,
-      testText: "nora"
+        interest: 3.25,
+        interested: true,
+        paymentRangeMin: 12,
+        paymentRangeMax: 36,
+        txId: 3,
     }
   ]);
 
@@ -164,7 +171,25 @@ const InvestorMarketPlace = () => {
       <Row>
         <Col md={10} lg={6} style={{ padding: 8 }}>
           {/* Grey Container */}
-          <Panel
+        <Button style={{
+            width:300,
+            height: 65,
+            marginTop: 10,
+            marginLeft: 3,
+            marginBottom: 5,
+            borderRadius: 15,
+            backgroundColor: '#344381'
+            }}>
+                <Row className='show-grid'>
+                    <Col xs='8'>
+                        <Icon icon='plus' style={{color: 'white', marginLeft: 60, marginTop: 7}}></Icon>
+                    </Col>
+                    <Col xs={2}>
+                        <p style={{color: 'white', fontFamily: "SarabunBold", fontSize: 20}}>ขอสินเชื่อใหม่</p>
+                    </Col>
+                </Row>  
+        </Button>
+        <Panel
             shaded
             style={{
               background: "#f0f0f0",
@@ -172,84 +197,146 @@ const InvestorMarketPlace = () => {
               borderRadius: 5,
               overflowY: "scroll"
             }}
-          >
+        >
             <Row style={{ marginTop: 20 }}>
               <Col md={24}>
                 <p
                   style={{
-                    fontSize: 26,
-                    alignSelf: "center",
-                    textAlign: "center",
+                    fontSize: 20,
                     fontFamily: "SarabunBold"
                   }}
                 >
-                  ค้นหาสินเชื่อ
+                  คำขอของคุณ
                 </p>
               </Col>
             </Row>
 
-            {/* First Row of Dropdown input */}
-            <Row style={{ marginTop: 20 }}>
-              <p>วงเงินกู้ (บาท)</p>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <CustomDropdown
-                  data={["2500", "3000", "4822"]}
-                  title="เริ่มต้น"
-                />
-              </Col>
-              <Col md={12}>
-                <CustomDropdown
-                  data={["2500", "3000", "4822"]}
-                  title="สิ้นสุด"
-                />
-              </Col>
-            </Row>
+            <Panel style={{
+                height: 170,
+                width: 260,
+                background: 'white',
+                borderRadius: 10,
+                marginRight: 50,
+                marginTop: 10
+            }}>
+                <Row className='show-grid'>
+                    <Col xs={12}>
+                        <div>
+                            <p style={{fontFamily: "SarabunBold"}}>วงเงินกู้</p>
+                        </div>
+                        <div>
+                            <p style={{
+                                fontFamily: "SarabunBold",
+                                fontSize: 30,
+                                color: "#DEDEDE"
+                            }} >80,000</p>
+                        </div>
+                        <div>
+                            <Icon icon='clock-o' size='3x' style={{color: '#4B5FB0'}}></Icon>
+                        </div>
+                    </Col>
 
-            {/* Seccond Row of Dropdown input */}
-            <Row style={{ marginTop: 20 }}>
-              <p>ระยะเวลาผ่อนชำระเงินกู้ (เดือน)</p>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <CustomDropdown data={["2500", "3000", "4822"]} title="12" />
-              </Col>
-              <Col md={12}>
-                <CustomDropdown data={["2500", "3000", "4822"]} title="48" />
-              </Col>
-            </Row>
+                    <Col xs={12}>
+                        <div>
+                            <p style={{fontFamily: "SarabunBold"}}>ประเภทสินทรัพย์</p>
+                        </div>
+                        <div>
+                            <Icon icon='car' size='5x' style={{
+                                color: "#DEDEDE", 
+                                marginLeft: 20,
+                                marginTop: 10,
+                                }}></Icon>
+                        </div>
+                    </Col>
+                </Row>
+                <div
+                    style={{
+                    height: 40,
+                    width: 230,
+                    background: "#f5f5f5",
+                    borderBottomLeftRadius: 8,
+                    borderBottomRightRadius: 8
+                    }}
+                >
+                    <Row>
+                    <Col>
+                        <p
+                        style={{
+                            color: "#344381",
+                            textAlign: "end",
+                            fontFamily: "SarabunBold"
+                        }}
+                        >กำลังรอการอนุมัติ ...</p>
+                    </Col>
+                    </Row>
+                </div>         
+            </Panel> 
 
-            {/* Third Row of Dropdown input */}
-            <Row style={{ marginTop: 20 }}>
-              <p>อายุ (ปี)</p>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <CustomDropdown data={["2500", "3000", "4822"]} title="20" />
-              </Col>
-              <Col md={12}>
-                <CustomDropdown data={["2500", "3000", "4822"]} title="50" />
-              </Col>
-            </Row>
+            <Panel style={{
+                height: 170,
+                width: 260,
+                background: 'white',
+                borderRadius: 10,
+                marginRight: 50,
+                marginTop: 10
+            }}>
+                <Row className='show-grid'>
+                    <Col xs={12}>
+                        <div>
+                            <p style={{fontFamily: "SarabunBold"}}>วงเงินกู้</p>
+                        </div>
+                        <div>
+                            <p style={{
+                                fontFamily: "SarabunBold",
+                                fontSize: 30,
+                                color: "#DEDEDE"
+                            }} >120,000</p>
+                        </div>
+                        <div>
+                            <Icon icon='clock-o' size='3x' style={{color: '#4B5FB0'}}></Icon>
+                        </div>
+                    </Col>
 
-            {/* Third Row of Dropdown input */}
-            <Row style={{ marginTop: 20 }}>
-              <p>ประเภทรายการ</p>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <CustomDropdown
-                  data={["2500", "3000", "4822"]}
-                  title="ทั้งหมด"
-                />
-              </Col>
-            </Row>
+                    <Col xs={12}>
+                        <div>
+                            <p style={{fontFamily: "SarabunBold"}}>ประเภทสินทรัพย์</p>
+                        </div>
+                        <div>
+                            <Icon icon='car' size='5x' style={{
+                                color: "#00C9D7", 
+                                marginLeft: 20,
+                                marginTop: 10,
+                                }}></Icon>
+                        </div>
+                    </Col>
+                </Row>
+                <div
+                    style={{
+                    height: 40,
+                    width: 230,
+                    background: "#00C9D7",
+                    borderBottomLeftRadius: 8,
+                    borderBottomRightRadius: 8
+                    }}
+                >
+                    <Row>
+                    <Col>
+                        <p
+                        style={{
+                            color: "white",
+                            textAlign: "end",
+                            fontFamily: "SarabunBold"
+                        }}
+                        >กำลังรอการอนุมัติ ...</p>
+                    </Col>
+                    </Row>
+                </div>         
+            </Panel> 
           </Panel>
         </Col>
         <Col md={14} lg={18} style={{ padding: 8 }}>
           <Panel
-            style={{ background: "#344381", height: 800, overflowY: "scroll" }}
+            style={{ background: "#DEDEDE", height: 800, overflowY: "scroll" }}
           >
             <Row>
               <Col>
@@ -258,24 +345,24 @@ const InvestorMarketPlace = () => {
                     fontSize: 26,
                     alignSelf: "center",
                     fontFamily: "SarabunBold",
-                    color: "white"
+                    color: "black"
                   }}
                 >
-                  ผลลัพธ์การค้นหา
+                  การเสนอสินเชื่อให้กับคุณ
                 </p>
               </Col>
             </Row>
             <Row>
               {borrowerReqsDummies.map(item => (
-                <Col md={12} lg={6}>
+               
                   <BorrowerRequestCard
-                    asset={item.asset}
-                    loan={item.loan}
+                    interest={item.interest}
+                    paymentRangeMin={item.paymentRangeMin}
+                    paymentRangeMax={item.paymentRangeMax}
                     interested={item.interested}
                     onSelected={() => onBorrowerReqSelected(item)}
                     tx={item}
                   />
-                </Col>
               ))}
             </Row>
           </Panel>

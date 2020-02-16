@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Panel,
   Row,
@@ -14,7 +14,8 @@ import {
   ControlLabel,
   FlexboxGrid
 } from "rsuite";
-import { Link } from "react-router-dom";
+import { abi, address } from "../config";
+import Web3 from "web3";
 
 function kFormatter(num) {
   return Math.abs(num) > 999
@@ -116,76 +117,67 @@ const BorrowerRequestCard = props => {
 };
 
 const InvestorMarketPlace = () => {
+  const [loanAuction, setLoanAuction] = useState("");
+  const [count, setCount] = useState(0);
+  const [lowestBidRate, setLowestBidRate] = useState(0);
+  const [lowestBidder, setLowestBidder] = useState("");
+  const [account, setAccount] = useState("");
+  const [errMessage, setErrMessage] = useState("");
 
-  componentWillMount() {
-    this.loadBlockChainData();
-  }
+  const [formValue, setFormValue] = useState({ interest: "" });
 
-  async loadBlockChainData() {
+  useEffect(() => {
+    loadBlockChainData();
+  }, []);
+
+  const loadBlockChainData = async () => {
     const web3 = new Web3();
     web3.setProvider(new web3.providers.HttpProvider("http://127.0.0.1:7545"));
     await window.ethereum.enable();
 
     const account = await web3.eth.getAccounts();
-    this.setState({ account: account[0] });
+    // this.setState({ account: account[0] });
+    setAccount(account[0]);
     console.log("account", account[0]);
 
     //web3 link to smart contract
     const loanAuction = new web3.eth.Contract(abi, address);
-    this.setState({ loanAuction });
+    // this.setState({ loanAuction });
+    setLoanAuction(loanAuction);
     console.log("loanAuction", loanAuction);
 
     const bidCount = await loanAuction.methods.count().call();
-    this.setState({ count: bidCount });
+    // this.setState({ count: bidCount });
+    setCount(bidCount);
     console.log("count: " + bidCount);
 
     const lowestRate = await loanAuction.methods.lowestBidRate().call();
-    this.setState({ lowestBidRate: lowestRate });
+    // this.setState({ lowestBidRate: lowestRate });
+    setLowestBidRate(lowestRate);
     console.log("Current Bit Rate: " + lowestRate);
 
     // const errMsg = await loanAuction.methods.errMsg().call();
     // this.setState({ errMessage: errMsg });
     // console.log("Current Bit Rate: " + errMsg);
-  }
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      txId: "",
-      Interest: "",
-      loanAuction: "",
-      count: 0,
-      lowestBidRate: 0,
-      lowestBidder: "",
-      auctionTime: "",
-      account: "",
-      errMessage: ""
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ Interest: event.target.value });
-  }
-
-  handleSubmit(event) {
-    alert("Your favorite flavor is: " + this.state.Interest);
-    console.log("txId:", this.state.txId)
-    this.bidLoan(this.state.txId, this.state.Interest);
-    event.preventDefault();
-  }
-
-  bidLoan(txId, interestRate) {
+  const bidLoan = (txId, interestRate) => {
     console.log("rate:", interestRate);
-    this.state.loanAuction.methods
+    loanAuction.methods
       .bid(txId, interestRate)
-      .send({ from: this.state.account })
+      .send({ from: account })
       .then(result => {
-        console.log('bid result = ', result)
-      })
-  }
+        console.log("bid result = ", result);
+      });
+  };
+
+  const handleSubmit = event => {
+    alert("Your favorite flavor is: " + formValue.interest);
+    console.log("txId:", selectedBorrowerReq.txId);
+    console.log("formValue.interest:", formValue.interest);
+    bidLoan(selectedBorrowerReq.txId, formValue.interest);
+    event.preventDefault();
+  };
 
   const [borrowerReqsDummies, setBorrowerReqsDummies] = useState([
     {
@@ -246,13 +238,6 @@ const InvestorMarketPlace = () => {
     }
 
     setBorrowerReqsDummies(updatedBorrowerReqs);
-  };
-
-  const [formValue, setFormValue] = useState({ interest: "" });
-  const handleSubmit = () => {
-    // this function provided for submit bid
-    console.log(formValue);
-    console.log(selectedBorrowerReq.txId);
   };
 
   return (

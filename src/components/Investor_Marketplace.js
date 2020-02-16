@@ -23,7 +23,7 @@ const CustomDropdown = ({ ...props }) => (
     <Dropdown
       placement="bottomEnd"
       {...props}
-      style={{ background: "white", width: 200, textAlign: "end" }}
+      style={{ background: "white", width: 100, textAlign: "end" }}
     >
       {props.data.map(item => (
         <Dropdown.Item>{item}</Dropdown.Item>
@@ -168,6 +168,7 @@ const InvestorMarketPlace = () => {
             style={{
               background: "#f0f0f0",
               height: 500,
+              width: 300,
               borderRadius: 5,
               overflowY: "scroll"
             }}
@@ -188,7 +189,7 @@ const InvestorMarketPlace = () => {
             </Row>
 
             {/* First Row of Dropdown input */}
-            <Row style={{ marginTop: 20 }}>
+            <Row style={{ marginTop: 20}}>
               <p>วงเงินกู้ (บาท)</p>
             </Row>
             <Row>

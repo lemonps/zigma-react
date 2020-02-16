@@ -56,6 +56,10 @@ const BorrowerRequestCard = props => {
 };
 
 class Bid extends Component {
+  componentWillMount() {
+    this.loadBlockChainData();
+  }
+
   async loadBlockChainData() {
     const web3 = new Web3();
     web3.setProvider(new web3.providers.HttpProvider("http://127.0.0.1:7545"));
@@ -77,11 +81,25 @@ class Bid extends Component {
     const lowestRate = await loanAuction.methods.lowestBidRate().call();
     this.setState({ lowestBidRate: lowestRate });
     console.log("Current Bit Rate: " + lowestRate);
+
+    // const errMsg = await loanAuction.methods.errMsg().call();
+    // this.setState({ errMessage: errMsg });
+    // console.log("Current Bit Rate: " + errMsg);
   }
 
   constructor(props) {
     super(props);
-    this.state = { txId: "", Interest: "" };
+    this.state = {
+      txId: "",
+      Interest: "",
+      loanAuction: "",
+      count: 0,
+      lowestBidRate: 0,
+      lowestBidder: "",
+      auctionTime: "",
+      account: "",
+      errMessage: ""
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -93,13 +111,15 @@ class Bid extends Component {
 
   handleSubmit(event) {
     alert("Your favorite flavor is: " + this.state.Interest);
+    console.log("txId:", this.state.txId)
+    this.bidLoan(this.state.txId, this.state.Interest);
     event.preventDefault();
   }
 
-  bidLoan(interestRate) {
+  bidLoan(txId, interestRate) {
     console.log("rate:", interestRate);
     this.state.loanAuction.methods
-      .bid(interestRate)
+      .bid(txId, interestRate)
       .send({ from: this.state.account })
       .then(result => {
         console.log('bid result = ', result)
@@ -143,6 +163,9 @@ class Bid extends Component {
                 </label>
                 <input type="submit" value="Submit" />
               </form>
+
+              <p>จำนวนครั้งที่ bid => {this.state.count}</p>
+              <p>Rate ต่ำสุด ณ ปัจจุบัน => {this.state.lowestBidRate}</p>
             </Panel>
           </Col>
         </Row>

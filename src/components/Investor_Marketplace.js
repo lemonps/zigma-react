@@ -354,8 +354,12 @@ const InvestorMarketPlace = () => {
                     <ControlLabel>แบบฟอร์มเสนอดอกเบี้ย</ControlLabel>
                     <FormControl
                       name="interest"
-                      placeholder="3.0%"
-                      style={{ textAlign: "center" }}
+                      placeholder="3.0"
+                      style={{
+                        textAlign: "center",
+                        fontSize: 20,
+                        color: "#47589e"
+                      }}
                     />
                   </FormGroup>
                   <FormGroup>

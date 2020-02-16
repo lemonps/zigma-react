@@ -9,7 +9,8 @@ const AppNavbar = () => {
       <Navbar.Header>
         <Nav>
           <NavLink to="/home" className="navbar-brand logo">
-            <p style={{ padding: 10, color: "white" }}>ZIGMA</p>
+            {/* <p style={{ padding: 10, color: "white" }}>ZIGMA</p> */}
+            <img src={ZIGMA} alt="logo" width={50} />
           </NavLink>
         </Nav>
       </Navbar.Header>

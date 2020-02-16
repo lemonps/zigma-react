@@ -477,17 +477,13 @@ const InvestorMarketPlace = () => {
             </div>
             <Row>
               {borrowerReqsDummies.map(item => (
-                <Col lg={6} md={6} sm={24}>
-                  <BorrowerRequestCard
-                    asset={item.asset}
-                    loan={item.loan}
-                    interest={
-                      selectedBorrowerReq.txId === item.txId ? true : false
-                    }
-                    onSelected={() => onBorrowerReqSelected(item)}
-                    tx={item}
-                  />
-                </Col>
+                <BorrowerRequestCard
+                  asset={item.asset}
+                  loan={item.loan}
+                  focus={selectedBorrowerReq.txId === item.txId ? true : false}
+                  onSelected={() => onBorrowerReqSelected(item)}
+                  tx={item}
+                />
               ))}
             </Row>
           </Panel>

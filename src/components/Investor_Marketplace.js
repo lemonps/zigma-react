@@ -1,5 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { Panel, Row, Col, Grid, Dropdown, Icon } from "rsuite";
+import React, { useState } from "react";
+import {
+  Panel,
+  Row,
+  Col,
+  Grid,
+  Dropdown,
+  Icon,
+  Button,
+  Divider,
+  Form,
+  FormControl,
+  FormGroup,
+  ControlLabel,
+  FlexboxGrid
+} from "rsuite";
 import { Link } from "react-router-dom";
 
 function kFormatter(num) {
@@ -16,7 +30,7 @@ const CustomDropdown = ({ ...props }) => (
       style={{ background: "white", width: 200, textAlign: "end" }}
     >
       {props.data.map(item => (
-        <Dropdown.Item>{item}</Dropdown.Item>
+        <Dropdown.Item style={{ color: "#47589e" }}>{item}</Dropdown.Item>
       ))}
     </Dropdown>
   </div>
@@ -92,7 +106,7 @@ const BorrowerRequestCard = props => {
                 fontFamily: "SarabunBold"
               }}
             >
-              เสนอดอกเบี้ย
+              {props.interested ? "ถูกเลือก" : "ดูรายละเอียด"}
             </p>
           </Col>
         </Row>
@@ -267,7 +281,7 @@ const InvestorMarketPlace = () => {
                     color: selectedBorrowerReq.txId ? "#5d77de" : "#e6e6e6"
                   }}
                 >
-                  รายละเอียดสินเชื่อ
+                  รายละเอียดการขอสินเชื่อ
                 </p>
                 {selectedBorrowerReq.txId ? null : (
                   <p
@@ -290,7 +304,7 @@ const InvestorMarketPlace = () => {
                   <p
                     style={{
                       fontSize: 16,
-                      textAlign: "start",
+                      textAlign: "center",
                       fontFamily: "SarabunBold"
                     }}
                   >
@@ -312,7 +326,7 @@ const InvestorMarketPlace = () => {
                   <p
                     style={{
                       fontSize: 16,
-                      textAlign: "start",
+                      textAlign: "center",
                       fontFamily: "SarabunBold"
                     }}
                   >
@@ -331,6 +345,26 @@ const InvestorMarketPlace = () => {
                   </p>
                 </Col>
               </Row>
+            ) : null}
+            {selectedBorrowerReq.txId ? (
+              <Form style={{ margin: "auto" }}>
+                <Divider>การเสนอดอกเบี้ยให้กับผู้ขอกู้</Divider>
+                <FlexboxGrid justify="center">
+                  <FormGroup>
+                    <ControlLabel>แบบฟอร์มเสนอดอกเบี้ย</ControlLabel>
+                    <FormControl
+                      name="interest"
+                      placeholder="3.0%"
+                      style={{ textAlign: "center" }}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Button style={{ background: "#0bd6b4", color: "white" }}>
+                      เสนอดอกเบี้ย
+                    </Button>
+                  </FormGroup>
+                </FlexboxGrid>
+              </Form>
             ) : null}
           </Panel>
         </Col>
@@ -355,6 +389,9 @@ const InvestorMarketPlace = () => {
                 </p>
               </Col>
             </Row>
+            <div>
+              <Divider />
+            </div>
             <Row>
               {borrowerReqsDummies.map(item => (
                 <Col lg={6} md={6} sm={24}>

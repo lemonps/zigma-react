@@ -181,7 +181,7 @@ const InvestorMarketPlace = () => {
 
   const [borrowerReqsDummies, setBorrowerReqsDummies] = useState([
     {
-      asset: "บ้าน",
+      asset: "car",
       loan: 125000,
       focus: false,
       numberOfBid: 7,
@@ -249,12 +249,7 @@ const InvestorMarketPlace = () => {
             shaded
             style={{
               background: "#f0f0f0",
-<<<<<<< HEAD
-              height: 500,
-              width: 300,
-=======
               height: "100%",
->>>>>>> dc23a176f3899583b1774d8fb011ef7983747293
               borderRadius: 5,
               overflowY: "scroll"
             }}
@@ -275,7 +270,7 @@ const InvestorMarketPlace = () => {
             </Row>
 
             {/* First Row of Dropdown input */}
-            <Row style={{ marginTop: 20}}>
+            <Row style={{ marginTop: 20 }}>
               <p>วงเงินกู้ (บาท)</p>
             </Row>
             <Row>
